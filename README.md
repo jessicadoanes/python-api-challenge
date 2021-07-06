@@ -1,94 +1,87 @@
-# Python API Challenge
+# Python API Homework - What's the Weather Like?
 
-#### Overview
+## Background
 
-### _Italic_
+Whether financial, political, or social -- data's true power lies in its ability to answer questions definitively. So let's take what you've learned about Python requests, APIs, and JSON traversals to answer a fundamental question: "What's the weather like as we approach the equator?"
 
-To make a phrase italic in Markdown, you can surround words with an underscore (_ ).
+Now, we know what you may be thinking: _"Duh. It gets hotter..."_
 
-### **Bold**
+But, if pressed, how would you **prove** it?
 
-Similarly, to make phrases bold in Markdown, you can surround words with two asterisks ( ** ).
+![Equator](Images/equatorsign.png)
 
-### Strikethrough
+## Part I - WeatherPy
 
-Strikethrough uses two tildes. ~~Scratch this.~~
+In this example, you'll be creating a Python script to visualize the weather of 500+ cities across the world of varying distance from the equator. To accomplish this, you'll be utilizing a [simple Python library](https://pypi.python.org/pypi/citipy), the [OpenWeatherMap API](https://openweathermap.org/api), and a little common sense to create a representative model of weather across world cities.
 
-### Headers
+The first requirement is to create a series of scatter plots to showcase the following relationships:
 
-To make headers in Markdown, you preface the phrase with a hash mark (#).
+* Temperature (F) vs. Latitude (Figure 1)
+Figure 1 (Latitude vs. Temperature Plot) is displaying the relationship between latitude and temperature across 550 cities. The correlation between latitude and temperature is strong, but not linear.
+![Venn Diagram](./WeatherPy/Figure1.png)
 
-### Links
+* Humidity (%) vs. Latitude (Figure 2)
+Figure 2 (Latitude vs. Humdity Plot) shows no relationshsip between latitude and humditiy.
+![Venn Diagram](./WeatherPy/Figure2.png)
 
-To create an inline link, you wrap the link text in brackets ( [ ] ), and then you wrap the link in parenthesis ( ( ) ). 
+* Cloudiness (%) vs. Latitude (Figure 3)
+Figure 3 (Latitude vs. Cloudiness) shows no correlation between latitude and cloudiness across the 550 cities.
+![Venn Diagram](./WeatherPy/Figure3.png)
 
-The other link type is called a reference link. As the name implies, the link is actually a reference to another place in the document.  The "references" above are the second set of brackets: [another place] and [another-link]. At the bottom of a Markdown document, these brackets are defined as proper links to outside websites. An advantage of the reference link style is that multiple links to the same place only need to be updated once. For example, if we decide to make all of the [another place] links go somewhere else, we only have to change the single reference link.
+* Wind Speed (mph) vs. Latitude (Figure 4)
+Figure 4 (Latitude vs. Wind Speed) shows no correlation between latitude and wind speed.
+![Venn Diagram](./WeatherPy/Figure4.png)
 
-[Google](https://www.google.com)
+The second requirement is to run linear regression on each relationship. This time, separate the plots into Northern Hemisphere (greater than or equal to 0 degrees latitude) and Southern Hemisphere (less than 0 degrees latitude):
 
-### Images
+#### Comparsion by Hempshire
+* Northern Hemisphere - Temperature (F) vs. Latitude (Figure 5)
+![Venn Diagram](./WeatherPy/Figure5.png)
 
-Images also have two styles, just like links, and both of them render the exact same way. The difference between links and images is that images are prefaced with an exclamation point ( ! ).
-The first image style is called an inline image link. To create an inline image link, enter an exclamation point ( ! ), wrap the alt text in brackets ( [ ] ), and then wrap the link in parenthesis ( ( ) ). (Alt text is a phrase or sentence that describes the image for the visually impaired.)
-<mark style="background-color: yellow">Note: the second link shoud fail, as you will not have a folder called __img__, nor the image file.</mark>
+* Southern Hemisphere - Temperature (F) vs. Latitude (Figure 6)
+![Venn Diagram](./WeatherPy/Figure6.png)
 
-![A pretty tiger](https://upload.wikimedia.org/wikipedia/commons/5/56/Tiger.50.jpg)
-![Venn Diagram](./img/venn.png) 
-use venndiagram for screenshots
+Figure 5 (Northern Hemisphere - Temperature v. Latitude) and Figure 6 (Southern Hemisphere - Temperature v. Latitude) display correlations between temperature and latitude. Figure 6 shows a positive correlation where as Figure 5 shows a negative correlation. As the latitude of a city moves closer to the equator, we see temperature increase, and as the latitude of a city moves away from the equator we see temperature decrease.
 
-### Blockquotes
+* Northern Hemisphere - Humidity (%) vs. Latitude (Figure 7)
+![Venn Diagram](./WeatherPy/Figure7.png)
 
-To create a block quote, all you have to do is preface a line with the "greater than" caret (>).
-You can also place a caret character on each line of the quote. This is particularly useful if your quote spans multiple paragraphs. 
+* Southern Hemisphere - Humidity (%) vs. Latitude (Figure 8)
+![Venn Diagram](./WeatherPy/Figure8.png)
 
-### Lists
+Figures 7 (Northern Hempisphere) and 8 (Southern Hempishere) display the relatoinship between humidity and latitude across 550 cities. While Figure 7 displays no correlation between humditity and latitude, Figure 8 displays a moderate correaltion between humditiy and latitude.
 
-To create an unordered list, you'll want to preface each item in the list with an asterisk ( * ). Each list item also gets its own line. Add a spacke after the asterix.
+* Northern Hemisphere - Cloudiness (%) vs. Latitude (Figure 9)
+![Venn Diagram](./WeatherPy/Figure9.png)
 
-An ordered list is prefaced with numbers, instead of asterisks. Take a look at this recipe:
+* Southern Hemisphere - Cloudiness (%) vs. Latitude (Figure 10)
+![Venn Diagram](./WeatherPy/Figure10.png)
 
-Occasionally, you might find the need to make a list with more depth, or, to nest one list within another. Have no fear, because the Markdown syntax is exactly the same. All you have to do is to remember to indent each asterisk one space more than the preceding item.
+Figures 9 (Northern Hemisphere) and 10 (Southern Hemisphere) display the relationship between cloudiness and latitude. Niether figure 9 or 10 display a coreelation between the illustrated data points.
 
-There's one more trick to lists and indentation that we'll explore, and that deals with the case of paragraphs. Suppose you want to create a bullet list that requires some additional context (but not another list). 
+* Northern Hemisphere - Wind Speed (mph) vs. Latitude (Figure 11)
+![Venn Diagram](./WeatherPy/Figure11.png)
 
-To create this sort of text, your paragraph must start on a line all by itself underneath the bullet point, and it must be indented by at least one space.
+* Southern Hemisphere - Wind Speed (mph) vs. Latitude
+![Venn Diagram](./WeatherPy/Figure12.png) (Figure 12)
 
-### Paragraph
 
-This is what's known as a hard break; what our poetry asks for is a soft break. You can accomplish this by inserting two spaces after each new line.
+Figures 11 and 12 display the relationship between wind speed and latitude. Figure 12 displays a weak negative correlation between wind speed and latitude; whereas, Figure 11 shows no relationship between wind speed and latitude in the northern hemisphere.
 
-### Code Blocks (Code fencing)
+---
 
-Use this to quote code inline with syntak highlighting!
+### Part II - VacationPy
 
-```python
-def loadCSV(filePath):
-    dataframe = pd.read_csv(filePath, index_col=False, encoding='iso-8859-1', nrows=1000)
-    datakeys = dataframe.keys()
-    return dataframe, datakeys
-``` 
+Now let's use your skills in working with weather data to plan future vacations. Use jupyter-gmaps and the Google Places API for this part of the assignment.
 
-### Color
+* Create a heat map that displays the humidity for every city from Part I.
 
-New GitHub supported method:
+  ![heatmap](VacationPy/result1.png)
 
-<div class="text-purple"> Purple </div>  
-<div class="text-red"> Red </div>  
-<div class="text-green"> Green </div>  
+* Plot the hotels on top of the humidity heatmap with each pin containing the **Hotel Name**, **City**, and **Country**.
 
-### Links
+  ![hotel map](Images/hotel_map.png)
 
-[Markdown](https://daringfireball.net/projects/markdown/)
+- - -
 
-[Dingus Editor](https://spec.commonmark.org/dingus/)
-
-[Babelmark2](https://johnmacfarlane.net/babelmark2/faq.html)
-
-[Markdown Guide](https://www.markdownguide.org)
-
-[More Markdown](https://dave.autonoma.ca/blog/2019/05/22/typesetting-markdown-part-1/)
-
-[Yet Another Markdown Resource](http://idratherbewriting.com/2013/06/04/exploring-markdown-in-collaborative-authoring-to-publishing-workflows/)
-
-[Wikipedia Example](https://en.wikipedia.org/wiki/Markdown#Example)
-
+© 2021 Trilogy Education Services, LLC, a 2U, Inc. brand. Confidential and Proprietary. All Rights Reserved.
